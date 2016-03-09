@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SceneTitle>
+  <Image>
+    <Path>data/white</Path>
+    <Position>
+      <X>100</X>
+      <Y>100</Y>
+    </Position>
+    <Scale>
+      <X>2.0</X>
+      <Y>2.0</Y>
+    </Scale>
+  </Image>
+</SceneTitle>
