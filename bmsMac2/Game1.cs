@@ -22,7 +22,10 @@ namespace bmsMac2
 		{
 			graphics = new GraphicsDeviceManager (this);
 			Content.RootDirectory = "Content";	            
-			graphics.IsFullScreen = true;		
+			graphics.IsFullScreen = false; //fullscreen
+			graphics.PreferMultiSampling = false; //antialiasing(multisampling)
+			this.IsMouseVisible = true; //mouse visible
+
 		}
 
 		/// <summary>
@@ -35,7 +38,10 @@ namespace bmsMac2
 		{
 			// TODO: Add your initialization logic here
 			base.Initialize ();
-				
+			base.Window.Title = "Mono BMS Prototype";
+			graphics.PreferredBackBufferWidth = (int)SceneManager.Instance.Dimensions.X;
+			graphics.PreferredBackBufferHeight = (int)SceneManager.Instance.Dimensions.Y;
+			graphics.ApplyChanges();
 		}
 
 		/// <summary>
@@ -46,7 +52,9 @@ namespace bmsMac2
 		{
 			// Create a new SpriteBatch, which can be used to draw textures.
 			spriteBatch = new SpriteBatch (GraphicsDevice);
-
+			SceneManager.Instance.GraphicsDevice = GraphicsDevice;
+			SceneManager.Instance.SpriteBatch = spriteBatch;
+			SceneManager.Instance.LoadContent(Content);
 			//TODO: use this.Content to load your game content here 
 		}
 
@@ -67,6 +75,7 @@ namespace bmsMac2
 			#endif
 			// TODO: Add your update logic here			
 			base.Update (gameTime);
+			SceneManager.Instance.Update(gameTime);
 		}
 
 		/// <summary>
@@ -80,6 +89,9 @@ namespace bmsMac2
 			//TODO: Add your drawing code here
             
 			base.Draw (gameTime);
+			spriteBatch.Begin();
+			SceneManager.Instance.Draw(spriteBatch);
+			spriteBatch.End();
 		}
 	}
 }

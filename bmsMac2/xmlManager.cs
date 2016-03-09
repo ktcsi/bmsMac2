@@ -5,11 +5,16 @@ using System.Text;
 using System.IO;
 using System.Xml.Serialization;
 
-namespace bmsPrototype
+namespace bmsMac2
 {
     public class xmlManager<T>
     {
         public Type Type;
+
+		public xmlManager()
+		{
+			Type = typeof(T);
+		}
 
         public T Load(string path)
         {

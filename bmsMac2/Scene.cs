@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 
-namespace bmsPrototype
+namespace bmsMac2
 {
     public class Scene
     {
@@ -17,10 +17,14 @@ namespace bmsPrototype
         [XmlIgnore]
         public Type Type;
 
+		public string xmlPath;
+
 
         public Scene()
         {
             Type = this.GetType();
+			xmlPath = "Load/" + Type.ToString ().Replace ("bmsMac2.", "") + ".xml";
+			System.Console.WriteLine("Scene Constructor caled : " + xmlPath);
         }
    
         public virtual void LoadContent()
